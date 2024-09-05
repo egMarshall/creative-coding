@@ -1,34 +1,53 @@
-let x = 5;
-let year = 2024;
-let nextYear = year + 1;
+let years = [2015, 2016, 2017, 2018, 2019, 2020];
+let menu = ["pizza", "pasta", "salad", "soup"];
 
-let dinner = "pizza";
-let sentence = "I am going to eat " + dinner + " for dinner.";
-
-function add(a, b) {
-  return a + b;
+for (item in menu) {
+  console.log(menu[item]);
 }
 
-let multiply = (a, b) => {
-  return a * b;
-};
+for (let i = 0; i < years.length; i++) {
+  console.log(years[i]);
+}
 
-console.log(add(3, 4));
-console.log(multiply(3, 4));
+menu.forEach((item) => {
+  console.log(item);
+});
+
+years.map((year) => {
+  console.log(year);
+});
+
+let something = true;
+if (something) {
+  // doSomething();
+} else {
+  // doSomethingElse();
+}
 
 //--------------------------------------------
 
 let canvas = document.querySelector("canvas");
 let context = canvas.getContext("2d");
 
-context.fillStyle = "blue";
-// context.fillRect(100, 100, 400, 400);
-
 context.lineWidth = 4;
-context.beginPath();
-context.rect(100, 100, 400, 400);
-context.stroke();
+const width = 60;
+const height = 60;
+const gap = 20;
+let x, y;
 
-context.beginPath();
-context.arc(300, 300, 100, 0, Math.PI * 2);
-context.stroke();
+for (let i = 0; i < 5; i++) {
+  for (let j = 0; j < 5; j++) {
+    x = 100 + (width + gap) * i;
+    y = 100 + (height + gap) * j;
+
+    context.beginPath();
+    context.rect(x, y, width, height);
+    context.stroke();
+
+    if (Math.random() > 0.5) {
+      context.beginPath();
+      context.rect(x + 8, y + 8, width - 16, height - 16);
+      context.stroke();
+    }
+  }
+}
